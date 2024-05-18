@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaHeart,FaAngleLeft,FaWhatsapp,FaAngleRight } from 'react-icons/fa';
+import { FaHeart, FaAngleLeft, FaWhatsapp, FaAngleRight } from 'react-icons/fa';
 import { IoCartOutline } from "react-icons/io5";
 import { BiBracket } from "react-icons/bi";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 function Productpage(props) {
   const randomshow = props.showsomething;
   const [products, setProducts] = useState([]);
@@ -39,6 +38,7 @@ function Productpage(props) {
     setshowbigimg(id);
   }
   const quickcloseHandler = () => {
+    setindex(0)
     setshowbigimg(false);
   }
   const next = () => {
@@ -47,11 +47,12 @@ function Productpage(props) {
     } else {
       setindex(0); // Set index to 0 when at the end
     }
-  };  
+  };
   const pre = () => {
-    // if (index === 0) {
-    //   setindex(index = 0)
-    // }
+    alert("pre");
+    if (index === 0) {
+      setindex(index + 1)
+    }
     setindex(index - 1)
   }
   return (
@@ -79,7 +80,7 @@ function Productpage(props) {
               </i>
             </div>
             <div style={{ position: 'absolute', bottom: '40px', left: "9px" }}>
-              <b style={{marginLeft:'-31px'}}>{product.name}</b>
+              <b style={{ marginLeft: '-31px' }}>{product.name}</b>
               <p style={{ margin: '0px 73px 0px 0px' }}>Rs. {product.price}</p>
             </div>
           </div>
@@ -89,6 +90,7 @@ function Productpage(props) {
           <>
             <div className="quickbox">
               <div className="quickimg">
+                <p>{index}</p>
                 <button onClick={quickcloseHandler} style={{ position: 'absolute', cursor: 'pointer' }}>
                   X
                 </button>
@@ -97,18 +99,28 @@ function Productpage(props) {
                 />
               </div>
             </div>
-            <button className='prev' onClick={() => pre()} ><FaAngleLeft /></button>
-            <button className='next' onClick={() => next()} ><FaAngleRight /></button>
+            <button className='next' onClick={() => next()} style={{
+              position: "absolute",
+              padding: "12px",
+              borderRadius: "10px",
+              margin: "0pc -18pc 10pc 0pc",
+              backgroundColor: "black",
+              color: "white",
+              cursor: "pointer",
+              border: "2px solid white"
+            }}><FaAngleRight /></button>
           </>
         )}
       </div>
-      {!randomshow && (
-        <div className="viewbox">
-          <Link to="/Product" style={{ padding: '15px 40px', borderRadius: '5px', background: 'black', color: 'white', fontSize: '18px' }}>View All</Link>
-        </div>
-      )}
+      {
+        !randomshow && (
+          <div className="viewbox">
+            <Link to="/Product" style={{ padding: '15px 40px', borderRadius: '5px', background: 'black', color: 'white', fontSize: '18px' }}>View All</Link>
+          </div>
+        )
+      }
 
-    </div>
+    </div >
   );
 }
 

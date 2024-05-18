@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom'
+
 
 function QuestionAnswerDropdown() {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
@@ -55,7 +57,8 @@ function QuestionAnswerDropdown() {
             </div>
           ))}
         </div>
-        <h3 className='homeh1'>Browse about section for more details</h3>
+        <h3 className='homeh1'><NavLink to='/blog'>Browse about section for more details</NavLink></h3>
+        {/*  */}
       </div>
     </>
   );
