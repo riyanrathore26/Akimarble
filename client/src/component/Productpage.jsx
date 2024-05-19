@@ -3,6 +3,7 @@ import { FaHeart, FaAngleLeft, FaWhatsapp, FaAngleRight } from 'react-icons/fa';
 import { IoCartOutline } from "react-icons/io5";
 import { BiBracket } from "react-icons/bi";
 import {Link, useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../config';
 function Productpage(props) {
   const randomshow = props.showsomething;
   const [products, setProducts] = useState([]);
@@ -16,7 +17,7 @@ function Productpage(props) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/showProduct'); // Replace with your actual API endpoint
+        const response = await fetch(`${BASE_URL}/api/showProduct); // Replace with your actual API endpoint
         const data = await response.json();
         if (randomshow == false) {
           const randomProducts = data.slice(); // Create a copy to avoid mutating original data
