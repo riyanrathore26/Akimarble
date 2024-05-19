@@ -28,7 +28,6 @@ function Homepage() {
       </div>
       <Productpage showsomething={false} />
       <div className="categoriesContainer">
-        <h1 className='homeh1'>Shop By Categories</h1>
         <MultiCarousel/>
         <QuestionAnswerDropdown/>
       <Footer></Footer>
