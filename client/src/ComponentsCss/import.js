@@ -8,3 +8,4 @@ import './product.css';
 import './signup.css';
 import './Comment.css';
 import './QandA.css';
+import './Gallery.css';
