@@ -6,7 +6,7 @@ import About from './component/About'
 import Contact from './component/Contact';
 import AdminPage from './component/AdminPage';
 import Quickpage from './component/Quickpage';
-import './CommponentsCss/import';
+import './ComponentsCss/import';
 import {
   createBrowserRouter,
   RouterProvider,
