@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Comments from "./Comments";
 import Footer from "./Footer";
+import { BASE_URL } from '../config';
 
 
 export default function Quickpage() {
@@ -15,7 +16,7 @@ export default function Quickpage() {
     // Function to fetch data from backend
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/fetchone/${productId}`);
+        const response = await fetch(`${BASE_URL}/api/fetchone/${productId}`);
         if (response.ok) {
           const data = await response.json();
 
