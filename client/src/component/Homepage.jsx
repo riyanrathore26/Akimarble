@@ -26,12 +26,10 @@ function Homepage() {
         <SwiperSlide><div className='sliderbox'>k</div></SwiperSlide>
       </Swiper>
       </div>
-      <h1 style={{margin:'5px 55px 5px'}}>Products</h1>
       <Productpage showsomething={false} />
       <div className="categoriesContainer">
         <h1 className='homeh1'>Shop By Categories</h1>
         <MultiCarousel/>
-        <h1 style={{margin:'0px 0px 0px -27pc'}}>Most Asked QuestionAndAnswer</h1>
         <QuestionAnswerDropdown/>
       <Footer></Footer>
       </div>
