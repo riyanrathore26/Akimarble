@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReviewForm from './ratings'
+import { BASE_URL } from '../config';
 
 export default function Comments({ productId }) { // Pass productId as a prop
 
@@ -8,7 +9,7 @@ export default function Comments({ productId }) { // Pass productId as a prop
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/showcomments/${productId}`);
+        const response = await fetch(`${BASE_URL}/api/showcomments/${productId}`);
         if (response.ok) {
           const data = await response.json();
           setComments(data); // Update comments state with fetched data
@@ -43,7 +44,7 @@ export default function Comments({ productId }) { // Pass productId as a prop
 
     try {
         
-      const response = await fetch(`http://localhost:5000/api/addcomment`, {
+      const response = await fetch(`${BASE_URL}/api/addcomment`, {
         method: 'POST', // Specify POST method for adding comments
         headers: { 'Content-Type': 'application/json' }, // Set Content-Type header
         body: JSON.stringify({ productId, comment: commentValue,username:user }), // Send data as JSON
