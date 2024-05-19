@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../config';
 import axios from 'axios';
 const AdminPage = () => {
   const [fileContainers, setFileContainers] = useState([{ id: 1, selectedImage: null }]);
@@ -29,7 +30,7 @@ const AdminPage = () => {
     });
 
     try {
-      const response = axios.post('http://localhost:5000/api/addProduct', formData, {
+      const response = axios.post(`${BASE_URL}/api/addProduct, formData, {
         // headers: {
         //   Authorization: token ? `Bearer ${token}` : '' // Include 'Bearer' prefix if required
         // }
