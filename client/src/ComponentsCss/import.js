@@ -10,3 +10,4 @@ import './Comment.css';
 import './AdminPage.css';
 import './QandA.css';
 import './Gallery.css';
+import './Search.css';

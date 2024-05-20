@@ -34,7 +34,6 @@ function Navbar() {
                 <NavLink to='/Product'>Products</NavLink>
                 <NavLink to='/Contact'>Contact</NavLink>
                 <NavLink to='/About'>About</NavLink>
-                <NavLink to='/Blog'>Blog</NavLink>
                 <NavLink to='/Login'>Login</NavLink>
 
             {localStorage.getItem('token') ? (

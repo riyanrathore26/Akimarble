@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
 import MultiCarousel from './MultiCarousel';
+import SearchBar from './Search';
 
 
 function Homepage() {
@@ -26,6 +27,7 @@ function Homepage() {
         <SwiperSlide><div className='sliderbox'>k</div></SwiperSlide>
       </Swiper>
       </div>
+      <SearchBar/>
       <Productpage showsomething={false} />
       <div className="categoriesContainer">
         <MultiCarousel/>
