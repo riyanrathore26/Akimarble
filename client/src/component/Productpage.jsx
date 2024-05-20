@@ -17,7 +17,7 @@ function Productpage(props) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/showProduct); // Replace with your actual API endpoint
+        const response = await fetch(`${BASE_URL}/api/showProduct`); // Replace with your actual API endpoint
         const data = await response.json();
         if (randomshow == false) {
           const randomProducts = data.slice(); // Create a copy to avoid mutating original data
@@ -63,7 +63,7 @@ function Productpage(props) {
           <div className="productbox"
             key={product.id}>
             <div className="waicon">
-              <a href={`https://wa.me/your-whatsapp-number?text=I'm interested in ${product.name}`} target="_blank" rel="noreferrer">
+              <a href={`http://wa.me/your-whatsapp-number?text=I'm interested in ${product.name}`} target="_blank" rel="noreferrer">
                 <FaWhatsapp className="whatsapp-icon" style={{ color: 'green', fontSize: '30px' }} />
               </a>
             </div>

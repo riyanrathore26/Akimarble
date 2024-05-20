@@ -30,7 +30,7 @@ const AdminPage = () => {
     });
 
     try {
-      const response = axios.post(`${BASE_URL}/api/addProduct, formData, {
+      const response = axios.post(`${BASE_URL}/api/addProduct`, formData, {
         // headers: {
         //   Authorization: token ? `Bearer ${token}` : '' // Include 'Bearer' prefix if required
         // }
