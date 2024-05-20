@@ -7,7 +7,7 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-router.post('/addProduct', upload.array('images', 3), async (req, res) => {
+router.post('/addProduct', upload.array('images', 13), async (req, res) => {
   try {
     const { name, description, price } = req.body;
 
@@ -27,6 +27,7 @@ router.post('/addProduct', upload.array('images', 3), async (req, res) => {
     });
 
     await newProduct.save();
+    console.log("product added");
     res.status(201).send('Product added successfully!');
   } catch (error) {
     console.error(error);
