@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Comments from "./Comments";
 import Footer from "./Footer";
 import { BASE_URL } from '../config';
+import Gallery from './Gallery'
 
 
 export default function Quickpage() {
@@ -43,36 +44,21 @@ export default function Quickpage() {
 
   return (
     <div>
-        <h1>{productData.name}</h1>
-      <div className="gallary">
-        {productImages.length > 0 && ( // Only render image gallery if images exist
-          <div className="image-grid">
-            {productImages.map((image, index) => (
-              <div
-                key={index}
-                className={`image-item ${
-                  index === 0 && productImages.length > 1 ? "big-image" : "small-image"
-                }`}
-              >
-                <img src={image} alt={`Image ${index}`} />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      <h1>{productData.name}</h1>
+      <Gallery productData={productImages} />
       <br />
       <div className="description">
         <h2>All About Product</h2>
         <p style={{
-  border: "2px solid black",
-  margin: "18px 70px",
-  borderRadius: "10px",
-  padding: "13px",
-}}>{productData?.description || "No description available."}</p>
+          border: "2px solid black",
+          margin: "18px 70px",
+          borderRadius: "10px",
+          padding: "13px",
+        }}>{productData?.description || "No description available."}</p>
 
       </div>
-      <Comments productId={productId}/>
-      <Footer/>
+      <Comments productId={productId} />
+      <Footer />
     </div>
   );
 }

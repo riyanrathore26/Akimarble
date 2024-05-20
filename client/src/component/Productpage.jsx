@@ -49,13 +49,6 @@ function Productpage(props) {
       setindex(0); // Set index to 0 when at the end
     }
   };
-  const pre = () => {
-    alert("pre");
-    if (index === 0) {
-      setindex(index + 1)
-    }
-    setindex(index - 1)
-  }
   return (
     <div>
       <div className="productpage">

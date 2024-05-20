@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../config';
 import axios from 'axios';
+
 const AdminPage = () => {
   const [fileContainers, setFileContainers] = useState([{ id: 1, selectedImage: null }]);
   const [name, setName] = useState('');
@@ -30,13 +31,13 @@ const AdminPage = () => {
     });
 
     try {
-      const response = axios.post(`${BASE_URL}/api/addProduct`, formData, {
+      const response = await axios.post(`${BASE_URL}/api/addProduct`, formData, {
         // headers: {
         //   Authorization: token ? `Bearer ${token}` : '' // Include 'Bearer' prefix if required
         // }
-      })
+      });
       
-      if (response.ok) {
+      if (response.status === 200) {
         console.log('Data submitted successfully');
         // Clear form fields
         setName('');
@@ -58,29 +59,26 @@ const AdminPage = () => {
   };
 
   return (
-    <>
+    <div className="admin-container">
       <h1>Add Information About Product</h1>
       <div>
         <div>
           {fileContainers.map((container) => (
-            <div key={container.id}>
+            <div key={container.id} className="file-input-container">
               <input
                 type="file"
+                id={`file-input-${container.id}`}
                 accept="image/*"
                 onChange={(event) => handleImageChange(event, container.id)}
               />
-              {/* {container.selectedImage && (
-                <div>
-                  <h4>Selected Image:</h4>
-                  <img
-                    src={URL.createObjectURL(container.selectedImage)}
-                    alt="Selected"
-                  />
-                </div>
-              )} */}
+              <label htmlFor={`file-input-${container.id}`}>
+                <i className="fas fa-upload"></i> Choose Image
+              </label>
             </div>
           ))}
-          <button onClick={handleAddContainer}>Add Image</button>
+          <button className="add-image-button" onClick={handleAddContainer}>
+            <i className="fas fa-plus"></i> Add Image
+          </button>
         </div>
         <div>
           <label htmlFor="name">Name:</label>
@@ -103,10 +101,12 @@ const AdminPage = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button onClick={handleSubmit}>Submit</button>
+          <button className="submit-button" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

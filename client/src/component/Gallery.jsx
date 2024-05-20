@@ -1,27 +1,20 @@
 import React, { useState } from 'react';
 import '../ComponentsCss/Gallery.css';
 
-const images = [
-  'https://via.placeholder.com/600x400', 
-  'https://via.placeholder.com/600x400/0000FF/808080', 
-  'https://via.placeholder.com/600x400/FF0000/FFFFFF',
-  'https://via.placeholder.com/600x400/00FF00/000000', 
-  'https://via.placeholder.com/600x400/FFFF00/000000',
-  'https://via.placeholder.com/600x400/0000FF/808080', 
-  'https://via.placeholder.com/600x400/FF0000/FFFFFF',
-  'https://via.placeholder.com/600x400/00FF00/000000', 
-  'https://via.placeholder.com/600x400/FFFF00/000000',
-];
-
-export default function Gallery() {
+export default function Gallery({ productData }) {
+  const images =  productData;
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const handleNext = () => {
-    setSelectedImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex < images.length - 1 ? prevIndex + 1 : prevIndex
+    );
   };
 
   const handlePrevious = () => {
-    setSelectedImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : prevIndex
+    );
   };
 
   return (
@@ -30,7 +23,9 @@ export default function Gallery() {
         <img src={images[selectedImageIndex]} alt="big" />
       </div>
       <div className="thumbnail-row">
-        <button className="nav-button" onClick={handlePrevious}>Pre</button>
+        <button className="nav-button" onClick={handlePrevious} disabled={selectedImageIndex === 0}>
+          Pre
+        </button>
         {images.map((src, index) => (
           <div 
             key={index} 
@@ -40,7 +35,9 @@ export default function Gallery() {
             <img src={src} alt={`thumbnail-${index}`} />
           </div>
         ))}
-        <button className="nav-button" onClick={handleNext}>Next</button>
+        <button className="nav-button" onClick={handleNext} disabled={selectedImageIndex === images.length - 1}>
+          Next
+        </button>
       </div>
     </div>
   );
